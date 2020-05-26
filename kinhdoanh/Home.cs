@@ -42,7 +42,8 @@ namespace kinhdoanh
                 txtTenKH.Text = dt.Rows[index]["TENKH"].ToString();
                 txtDiaChi.Text = dt.Rows[index]["DIACHI"].ToString();
                 load_chitiet(txtMAKH.Text);
-                
+                btnPrevious.Visible = false;
+
             }
             catch (Exception ex)
             {
@@ -99,7 +100,7 @@ namespace kinhdoanh
                 index++;
                 if (index < dt.Rows.Count - 1)
                 {
-                    
+                    btnPrevious.Visible = true;
                     txtMAKH.Text = dt.Rows[index]["MAKH"].ToString();
                     txtTenKH.Text = dt.Rows[index]["TENKH"].ToString();
                     txtDiaChi.Text = dt.Rows[index]["DIACHI"].ToString();
@@ -107,7 +108,9 @@ namespace kinhdoanh
                 }
                 else
                 {
+                    btnNext.Visible = false;
                     MessageBox.Show("You are in the last data", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
                 }
 
             }
@@ -125,6 +128,7 @@ namespace kinhdoanh
                 index--;
                 if (index >= 0)
                 {
+                    btnNext.Visible = true;
                     txtMAKH.Text = dt.Rows[index]["MAKH"].ToString();
                     txtTenKH.Text = dt.Rows[index]["TENKH"].ToString();
                     txtDiaChi.Text = dt.Rows[index]["DIACHI"].ToString();
@@ -132,7 +136,9 @@ namespace kinhdoanh
                 }
                 else
                 {
+                    btnPrevious.Visible = false;
                     MessageBox.Show("You are in the first data", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
                 }
             }
             catch (Exception ex)
