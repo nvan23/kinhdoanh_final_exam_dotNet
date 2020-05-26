@@ -10,5 +10,11 @@ INSERT INTO [dbo].[su_dung] ([MASD], [LOAISD], [DONGIA]) VALUES (N'TD', N'TIEU D
 
 
 INSERT INTO [dbo].[chi_tiet] ([MASD], [MAKH], [SoKW], [ThanhTien]) VALUES (N'SX', N'KH01', 10, NULL)
-INSERT INTO [dbo].[chi_tiet] ([MASD], [MAKH], [SoKW], [ThanhTien]) VALUES (N'SD', N'KH02', 12, NULL)
-INSERT INTO [dbo].[chi_tiet] ([MASD], [MAKH], [SoKW], [ThanhTien]) VALUES (N'TD', N'KH03', 15, NULL)
+INSERT INTO [dbo].[chi_tiet] ([MASD], [MAKH], [SoKW], [ThanhTien]) VALUES (N'SD', N'KH02', 11, NULL)
+INSERT INTO [dbo].[chi_tiet] ([MASD], [MAKH], [SoKW], [ThanhTien]) VALUES (N'TD', N'KH03', 12, NULL)
+INSERT INTO [dbo].[chi_tiet] ([MASD], [MAKH], [SoKW], [ThanhTien]) VALUES (N'SX', N'KH02', 13, NULL)
+INSERT INTO [dbo].[chi_tiet] ([MASD], [MAKH], [SoKW], [ThanhTien]) VALUES (N'SD', N'KH01', 14, NULL)
+INSERT INTO [dbo].[chi_tiet] ([MASD], [MAKH], [SoKW], [ThanhTien]) VALUES (N'TD', N'KH01', 15, NULL)
+INSERT INTO [dbo].[chi_tiet] ([MASD], [MAKH], [SoKW], [ThanhTien]) VALUES (N'SX', N'KH03', 16, NULL)
+INSERT INTO [dbo].[chi_tiet] ([MASD], [MAKH], [SoKW], [ThanhTien]) VALUES (N'SD', N'KH03', 17, NULL)
+INSERT INTO [dbo].[chi_tiet] ([MASD], [MAKH], [SoKW], [ThanhTien]) VALUES (N'TD', N'KH02', 18, NULL)

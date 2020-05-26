@@ -14,49 +14,63 @@ namespace kinhdoanh
     public partial class Home : Form
     {
         int index = 0;
-        int tong_tien = 0;
         SqlDataAdapter da;
         DataTable dt = new DataTable();
-        DataSet dset;
         BindingSource bs;
-
-        //paging in datagridview
-        private const int totalRecords = 43;
-        private const int pageSize = 10;
+        DataSet dset;
 
         public Home()
         {
             InitializeComponent();
+            load_data();
         }
-
-
-        //hande paging
-
-
         
 
         public void load_data()
         {
             try
             {
+                string strSelect = "SELECT * FROM khach_hang";
                 clsDatabase.OpenConnection();
-                string strSelect = "Select chi_tiet.MASD, LOAISD, DONGIA, SoKW, ThanhTien=su_dung.DONGIA*chi_tiet.SoKW, chi_tiet.MAKH, khach_hang.TENKH, khach_hang.DIACHI from khach_hang inner join chi_tiet on khach_hang.MAKH = chi_tiet.MAKH inner join su_dung on chi_tiet.MASD = su_dung.MASD";
-                SqlCommand com = new SqlCommand(strSelect, clsDatabase.con);
-                com.ExecuteNonQuery();
-                da = new SqlDataAdapter(com);
+                SqlCommand con = new SqlCommand(strSelect, clsDatabase.con);
+                SqlDataAdapter da = new SqlDataAdapter(con);
                 da.Fill(dt);
-                dgvKinhDoanh.DataSource = dt;
-                dgvKinhDoanh.Columns[5].Visible = false;
-                dgvKinhDoanh.Columns[6].Visible = false;
-                dgvKinhDoanh.Columns[7].Visible = false;
-                showData(0);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    tong_tien += Convert.ToInt32(dr["ThanhTien"].ToString());
-                }
-                txtTongTien.Text = tong_tien.ToString();
+                clsDatabase.CloseConnection();
 
-                //paing
+                //Lay khach hang dau tien
+                txtMAKH.Text = dt.Rows[index]["MAKH"].ToString();
+                txtTenKH.Text = dt.Rows[index]["TENKH"].ToString();
+                txtDiaChi.Text = dt.Rows[index]["DIACHI"].ToString();
+                load_chitiet(txtMAKH.Text);
+                
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
+        }
+
+        //Lay chi tiet khach hang 
+        public void load_chitiet(string ma)
+        {
+            try
+            {
+                string strSelect = "SELECT sd.MASD, sd.LOAISD, ct.SoKW, sd.DONGIA, ct.SoKW*sd.DONGIA as THANHTIEN FROM khach_hang kh join chi_tiet ct on kh.MAKH = ct.MAKH join su_dung sd on ct.MASD = sd.MASD WHERE ct.MAKH= '" + ma + "'";
+                clsDatabase.OpenConnection();
+                SqlCommand con = new SqlCommand(strSelect, clsDatabase.con);
+                SqlDataAdapter da = new SqlDataAdapter(con);
+                DataTable dt2 = new DataTable();
+                da.Fill(dt2);
+                dgvKinhDoanh.DataSource = dt2;
+                clsDatabase.CloseConnection();
+                double total = 0;
+                total = dgvKinhDoanh.Rows.Cast<DataGridViewRow>()
+                .Sum(t => Convert.ToDouble(t.Cells[4].Value));
+
+                txtTongTien.Text = total.ToString();
+
+                //paging
                 dset = new DataSet();
                 da.Fill(dset);
                 bs = new BindingSource();
@@ -64,25 +78,14 @@ namespace kinhdoanh
                 bindingNavigator_kinh_doanh.BindingSource = bs;
                 dgvKinhDoanh.DataSource = bs;
 
-
-                clsDatabase.CloseConnection();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void showData(int index)
-        {
-            txtMAKH.Text = dt.Rows[index][5].ToString();
-            txtTenKH.Text = dt.Rows[index][6].ToString();
-            txtDiaChi.Text = dt.Rows[index][7].ToString();
-        }
-
-        private void Home_Load(object sender, EventArgs e)
-        {
-            load_data();
-        }
+        
+        
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -91,28 +94,50 @@ namespace kinhdoanh
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            index++;
-            if (index < dt.Rows.Count)
+            try
             {
-                showData(index);
+                index++;
+                if (index < dt.Rows.Count - 1)
+                {
+                    
+                    txtMAKH.Text = dt.Rows[index]["MAKH"].ToString();
+                    txtTenKH.Text = dt.Rows[index]["TENKH"].ToString();
+                    txtDiaChi.Text = dt.Rows[index]["DIACHI"].ToString();
+                    load_chitiet(txtMAKH.Text);
+                }
+                else
+                {
+                    MessageBox.Show("You are in the last data", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("You are in the last data", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                index = dt.Rows.Count - 1;
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            index--;
-            if (index >= 0)
+            try
             {
-                showData(index);
+                index--;
+                if (index >= 0)
+                {
+                    txtMAKH.Text = dt.Rows[index]["MAKH"].ToString();
+                    txtTenKH.Text = dt.Rows[index]["TENKH"].ToString();
+                    txtDiaChi.Text = dt.Rows[index]["DIACHI"].ToString();
+                    load_chitiet(txtMAKH.Text);
+                }
+                else
+                {
+                    MessageBox.Show("You are in the first data", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("You are in the first data", "Infomation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
