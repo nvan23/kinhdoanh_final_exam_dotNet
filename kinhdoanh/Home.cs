@@ -17,10 +17,23 @@ namespace kinhdoanh
         int tong_tien = 0;
         SqlDataAdapter da;
         DataTable dt = new DataTable();
+        DataSet dset;
+        BindingSource bs;
+
+        //paging in datagridview
+        private const int totalRecords = 43;
+        private const int pageSize = 10;
+
         public Home()
         {
             InitializeComponent();
         }
+
+
+        //hande paging
+
+
+        
 
         public void load_data()
         {
@@ -42,6 +55,16 @@ namespace kinhdoanh
                     tong_tien += Convert.ToInt32(dr["ThanhTien"].ToString());
                 }
                 txtTongTien.Text = tong_tien.ToString();
+
+                //paing
+                dset = new DataSet();
+                da.Fill(dset);
+                bs = new BindingSource();
+                bs.DataSource = dset.Tables[0].DefaultView;
+                bindingNavigator_kinh_doanh.BindingSource = bs;
+                dgvKinhDoanh.DataSource = bs;
+
+
                 clsDatabase.CloseConnection();
             }
             catch (Exception ex)
