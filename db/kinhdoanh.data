@@ -1,0 +1,14 @@
+INSERT INTO [dbo].[khach_hang] ([MAKH], [TENKH], [DIACHI]) VALUES (N'KH01', N'Nguyen Van A', N'Ninh Kieu, Can Tho')
+INSERT INTO [dbo].[khach_hang] ([MAKH], [TENKH], [DIACHI]) VALUES (N'KH02', N'Nguyen Van B', N'O Mon, Can Tho')
+INSERT INTO [dbo].[khach_hang] ([MAKH], [TENKH], [DIACHI]) VALUES (N'KH03', N'Nguyen Van C', N'Thot Not, Can Tho')
+INSERT INTO [dbo].[khach_hang] ([MAKH], [TENKH], [DIACHI]) VALUES (N'KH04', N'Nguyen Van D', N'Co do, Can Tho')
+
+
+INSERT INTO [dbo].[su_dung] ([MASD], [LOAISD], [DONGIA]) VALUES (N'SD', N'SU DUNG', 220)
+INSERT INTO [dbo].[su_dung] ([MASD], [LOAISD], [DONGIA]) VALUES (N'SX', N'SAN XUAT', 500)
+INSERT INTO [dbo].[su_dung] ([MASD], [LOAISD], [DONGIA]) VALUES (N'TD', N'TIEU DUNG', 100)
+
+
+INSERT INTO [dbo].[chi_tiet] ([MASD], [MAKH], [SoKW], [ThanhTien]) VALUES (N'SX', N'KH01', 10, NULL)
+INSERT INTO [dbo].[chi_tiet] ([MASD], [MAKH], [SoKW], [ThanhTien]) VALUES (N'SD', N'KH02', 12, NULL)
+INSERT INTO [dbo].[chi_tiet] ([MASD], [MAKH], [SoKW], [ThanhTien]) VALUES (N'TD', N'KH03', 15, NULL)

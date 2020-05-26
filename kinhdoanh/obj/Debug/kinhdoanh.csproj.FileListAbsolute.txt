@@ -1,0 +1,9 @@
+D:\HeeYee\Source\TaiLieuHocTap\Nam4_HocKi_2\dotNet\Exam\kinhdoanh\kinhdoanh\bin\Debug\kinhdoanh.exe.config
+D:\HeeYee\Source\TaiLieuHocTap\Nam4_HocKi_2\dotNet\Exam\kinhdoanh\kinhdoanh\bin\Debug\kinhdoanh.exe
+D:\HeeYee\Source\TaiLieuHocTap\Nam4_HocKi_2\dotNet\Exam\kinhdoanh\kinhdoanh\bin\Debug\kinhdoanh.pdb
+D:\HeeYee\Source\TaiLieuHocTap\Nam4_HocKi_2\dotNet\Exam\kinhdoanh\kinhdoanh\obj\Debug\kinhdoanh.csprojResolveAssemblyReference.cache
+D:\HeeYee\Source\TaiLieuHocTap\Nam4_HocKi_2\dotNet\Exam\kinhdoanh\kinhdoanh\obj\Debug\kinhdoanh.Home.resources
+D:\HeeYee\Source\TaiLieuHocTap\Nam4_HocKi_2\dotNet\Exam\kinhdoanh\kinhdoanh\obj\Debug\kinhdoanh.Properties.Resources.resources
+D:\HeeYee\Source\TaiLieuHocTap\Nam4_HocKi_2\dotNet\Exam\kinhdoanh\kinhdoanh\obj\Debug\kinhdoanh.csproj.GenerateResource.Cache
+D:\HeeYee\Source\TaiLieuHocTap\Nam4_HocKi_2\dotNet\Exam\kinhdoanh\kinhdoanh\obj\Debug\kinhdoanh.exe
+D:\HeeYee\Source\TaiLieuHocTap\Nam4_HocKi_2\dotNet\Exam\kinhdoanh\kinhdoanh\obj\Debug\kinhdoanh.pdb
